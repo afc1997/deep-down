@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEEP DOWN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SVG FILTER DEFINITION (hidden) -->
+  <svg id="fog-svg" xmlns="http://www.w3.org/2000/svg" width="0" height="0"
+       style="position:absolute;overflow:hidden">
+    <defs>
+      <filter id="fog-filter" x="-20%" y="-20%" width="140%" height="140%"
+              color-interpolation-filters="linearRGB">
+        <feTurbulence
+          id="fog-turb"
+          type="fractalNoise"
+          baseFrequency="0.009 0.006"
+          numOctaves="4"
+          seed="8"
+          result="turb"
+        />
+        <feDisplacementMap
+          id="fog-disp"
+          in="SourceGraphic"
+          in2="turb"
+          scale="180"
+          xChannelSelector="R"
+          yChannelSelector="G"
+          result="displaced"
+        />
+        <feGaussianBlur in="displaced" stdDeviation="12"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div id="deck">
+
+    <!-- FOG LIVES INSIDE DECK so it can sit between bg images and text -->
+    <div id="fog-layer">
+      <div class="fog-bank fog-b1"></div>
+      <div class="fog-bank fog-b2"></div>
+      <div class="fog-bank fog-b3"></div>
+      <div class="fog-bank fog-b4"></div>
+    </div>
+    <div id="fog-transition"></div>
+
+    <!-- 0 · COVER -->
+    <section class="slide active" id="slide-cover">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-center">
+        <p class="slide-writer">A film by Fisherman &amp; Trout</p>
+        <h1 class="cover-title">DEEP<br>DOWN</h1>
+      </div>
+
+    </section>
+
+    <!-- 1 · LOGLINE -->
+    <section class="slide" id="slide-logline">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-center-block">
+        <div class="logline-block">
+        <span class="slide-tag">Logline</span>
+        <p class="logline-text">
+          Amid the Scottish highlands, a drifter seeks shelter in a rotting village where
+          a siren's call from the town's well drags him into obsession and terror.
+        </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · SYNOPSIS 1 -->
+    <section class="slide" id="slide-synopsis-1">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-left">
+        <span class="slide-tag">Synopsis</span>
+        <div class="body-col">
+          <p>Deep Down is a dark fable following Quinn, a wounded American drifter on the run from past crimes, who finds himself in the remote Scottish village of Freuhman. Looking for a chance of anonymity and enough cash to escape the isle, Quinn finds shelter on a rotting farm with Godfrey, a paranoid old recluse. As Quinn gets entangled with the townsfolk; something otherworldly stirs beneath the soil. Deep within the farmer's well, a Siren calls to him.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · SYNOPSIS 2 — rule break -->
+    <section class="slide" id="slide-synopsis-2">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-center-block">
+        <p class="synopsis-quote">Visions begin to plague him: dreams of this beautiful yet inhuman creature calling from the depths, tempting him toward her night after night.</p>
+      </div>
+    </section>
+
+    <!-- 4 · SYNOPSIS 3 -->
+    <section class="slide" id="slide-synopsis-3">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-right">
+        <div class="body-col">
+          <p>As Quinn tries to escape the siren's grasp, he becomes entangled with the villagers, each carrying secrets and shame of their own. But as Quinn repeats his past mistakes, he succumbs to his temptation, infecting the town, causing women across Freuhman, young and old, to become suddenly and violently pregnant. Their bodies overtaken by something they cannot control.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · THEME -->
+    <section class="slide" id="slide-theme">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-left">
+        <span class="slide-tag">Theme</span>
+        <div class="body-col">
+          <p>Deep Down presents a mystery about trauma, male repression, and the slow collapse of identity. For us, Quinn's journey is an allegory for the corrosive effects of shame, in particular, the shame of lust in men. Lust in this story is not romantic or freeing; it's haunting, spectral, and tied to Quinn's sense of self-loathing. The woman from the well is a manifestation of his forbidden thoughts, of the things he was told to repress as a soldier, as a man, as someone trying desperately to appear "normal" in a world that doesn't have space for him.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · QUINN -->
+    <section class="slide" id="slide-quinn">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-split">
+        <div class="char-label-col">
+<h2 class="char-name">Quinn</h2>
+        </div>
+        <div class="char-desc-col">
+          <p>Rugged, lean, eyes like a starving coyote. Vietnam veteran, now two years drifting Europe by train and foot. He arrives in Freumhan with a bleeding right hand, a green military pack, and no reason to stop — but something about this rotten corner of Scotland won't let him leave.</p>
+          <p>Quinn operates through charm and neediness in equal measure. He works hard, drinks harder, and looks at things he shouldn't. He's running from whatever happened on that Edinburgh street. The well is the first honest thing he's found.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · COLIN -->
+    <section class="slide" id="slide-colin">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-split">
+        <div class="char-label-col">
+<h2 class="char-name">Colin</h2>
+        </div>
+        <div class="char-desc-col">
+          <p>Wide and tall. Dressed all in black. A dark beard hides his face. He enters rooms like a bear in search of honey — slowly, casually, but with total intention. He already knows Quinn is a soldier when they meet. He already knows about the military pack.</p>
+          <p>Colin is connected to the factory, connected to Fiona, connected to a web of knowledge he volunteers slowly, a piece at a time. He's the town's center of gravity and he knows it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · FIONA -->
+    <section class="slide" id="slide-fiona">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-split">
+        <div class="char-label-col">
+<h2 class="char-name">Fiona</h2>
+        </div>
+        <div class="char-desc-col">
+          <p>Light brown hair, big hazel eyes. Unmistakably beautiful. She works the pub, hauls the deliveries alone down the road, lives two doors down from the bar her mother runs. She's never been anywhere else and she knows exactly what that means.</p>
+          <p>"I'm stuck knowing I'm Scottish." She says it laughing, but she means it. Quinn is the first person who's looked at Freumhan and called it beautiful. She doesn't know whether to trust that.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 · THE WOMAN -->
+    <section class="slide" id="slide-woman">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-split">
+        <div class="char-label-col">
+<h2 class="char-name">Siren</h2>
+        </div>
+        <div class="char-desc-col">
+          <p>Porcelain white skin. Jet black hair, slicked by water. Big white eyes ringed in black. She stands naked at the bottom of Godfrey's stone well, holding the bucket in both hands, and looks up at Quinn.</p>
+          <p>She smiles. She disappears. Godfrey says the tainted land does this — poisons the mind, makes men see things. Her portrait, black and white and old, sits on Godfrey's bedside table. Quinn steals the flask from beside it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · GODFREY -->
+    <section class="slide" id="slide-godfrey">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-split">
+        <div class="char-label-col">
+<h2 class="char-name">Godfrey</h2>
+        </div>
+        <div class="char-desc-col">
+          <p>Small, frail, wrinkles as deep as cuts. He plows his diseased fields alone. His silver pearlescent flask never leaves his pocket. He covers the well. He hasn't lived anywhere else since before the first war. "The big one."</p>
+          <p>"Got things here. Obligations of the earth that keep me BOUND." He can erupt without warning — slaps Quinn in the face, grabs him by the collar, then sets supper on the table thirty minutes later. The farm is dying. He won't leave. Something in the well is the reason.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 · CAMERA -->
+    <section class="slide" id="slide-camera">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-left">
+        <span class="slide-tag">Camera</span>
+        <div class="body-col">
+          <p>Handheld but controlled — the camera lives close to Quinn, close enough to smell sweat and soil. Wide lenses on exteriors so the Scottish landscape swallows figures whole. Rack focus into fog; let backgrounds dissolve. Flashlight cinematography for night sequences. The well is always shot from above: one circular beam into black water.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 · PRODUCTION DESIGN -->
+    <section class="slide" id="slide-production">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-right">
+        <div class="logline-block">
+          <span class="slide-tag">Production Design</span>
+          <div class="body-col">
+            <p>Scotland, 1971. Cobblestone farmhouses half-sunk into the earth. Hay-roofed buildings. A concrete factory chimney that screams. Yellow barley heavy with black fungus. Hand-carved chairs without tables. Cracked glasses caked in dust. The silver pearlescent flask. The faded portrait of The Woman, black-and-white and old as the well.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 · MUSIC -->
+    <section class="slide" id="slide-music">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-left">
+        <span class="slide-tag">Music</span>
+        <div class="body-col">
+          <p>Penderecki-esque strings — the script calls for them by name at the title card. Dissonant, ancient, not decorative. Sound as physical sensation. Scottish folk melody at its most corroded edge. Silence used as an instrument. The well has its own sound.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 · SOUND DESIGN -->
+    <section class="slide" id="slide-sound">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-right">
+        <div class="logline-block">
+          <span class="slide-tag">Sound Design</span>
+          <div class="body-col">
+            <p>The factory screams in industrial agony. Leather boots on cobblestone. Water splashing in pitch black. The sheep's BAAAA cutting through the night. Sirens that overtake all sound. Wind rushing over the highlands. The soil is never fully quiet. Everything in Freumhan has a sound underneath it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 · EDIT -->
+    <section class="slide" id="slide-edit">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-left">
+        <span class="slide-tag">Edit</span>
+        <div class="body-col">
+          <p>Slow. Patient. Let silences breathe until the audience holds their breath. The script's key editorial device: "ALL OF THE FOLLOWING HAPPENS WITHIN A MOMENT; A BRIEF GLANCE." The film moves at the pace of farm labor — then cuts like a knife. The well sequences are pure montage: darkness, a beam, a face.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 · ABOUT 1 — bio -->
+    <section class="slide" id="slide-about-1">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-right">
+        <div class="logline-block">
+          <span class="slide-tag">Fisherman &amp; Trout</span>
+          <div class="about-bio">
+            <p>Alex Fischman Cárdenas and Trout Cohen are a writer-director duo who met at a urinal on their first day at NYU. Their work has earned Vimeo Staff Picks and screened at Sundance, Clermont-Ferrand, Sitges, and AFI Fest.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 · ABOUT 2 — selected work -->
+    <section class="slide" id="slide-about-2">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-center-block">
+        <div class="work-grid">
+          <button class="work-thumb"
+                  data-vimeo-embed="https://player.vimeo.com/video/1034785756?h=6a958389dd&autoplay=1&color=ffffff&title=0&byline=0&portrait=0"
+                  data-vimeo-oembed="https://vimeo.com/1034785756/6a958389dd">
+            <div class="work-thumb-img work-thumb-img--wide">
+              <img class="work-thumb-poster" alt="¡PIKA! (The Itch)" />
+            </div>
+            <span class="work-thumb-title">¡PIKA! (The Itch)</span>
+            <span class="work-thumb-meta">2025 · Sundance, Sitges</span>
+          </button>
+          <button class="work-thumb"
+                  data-vimeo-embed="https://player.vimeo.com/video/1101244533?autoplay=1&color=ffffff&title=0&byline=0&portrait=0"
+                  data-vimeo-oembed="https://vimeo.com/1101244533">
+            <div class="work-thumb-img">
+              <img class="work-thumb-poster" alt="Ovejas y Lobos" />
+            </div>
+            <span class="work-thumb-title">Ovejas y Lobos</span>
+            <span class="work-thumb-meta">2024 · Clermont-Ferrand, AFI Fest</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18 · CONTACT -->
+    <section class="slide" id="slide-contact">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-mid-left">
+        <div class="contact-grid">
+          <div class="contact-group">
+            <p class="contact-agency">WME</p>
+            <p class="contact-detail"><a href="mailto:MAlvarez@wmeagency.com">Marco Alvarez</a></p>
+            <p class="contact-email">MAlvarez@wmeagency.com</p>
+            <p class="contact-detail"><a href="mailto:JBaldovino@wmeagency.com">Jacey Baldovino</a></p>
+            <p class="contact-email">JBaldovino@wmeagency.com</p>
+          </div>
+          <div class="contact-group">
+            <p class="contact-agency">Industry Entertainment</p>
+            <p class="contact-detail"><a href="mailto:rachel@industryentertainment.com">Rachel Linehan</a></p>
+            <p class="contact-email">rachel@industryentertainment.com</p>
+            <p class="contact-detail"><a href="mailto:stephenc@industryentertainment.com">Steve Crawford</a></p>
+            <p class="contact-email">stephenc@industryentertainment.com</p>
+          </div>
+          <div class="contact-group">
+            <p class="contact-agency">Direct</p>
+            <p class="contact-detail"><a href="mailto:alexfischmancardenas@gmail.com">Alex Fischman Cárdenas</a></p>
+            <p class="contact-email">alexfischmancardenas@gmail.com</p>
+            <p class="contact-detail"><a href="mailto:troutcohenfilms@gmail.com">Trout Cohen</a></p>
+            <p class="contact-email">troutcohenfilms@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /deck -->
+
+  <!-- NAV — outside deck so always on top -->
+  <nav id="slide-nav" aria-label="Slide navigation">
+    <ul>
+      <li><button class="dot active"  data-index="0"  aria-label="Cover"></button></li>
+      <li><button class="dot"         data-index="1"  aria-label="Logline"></button></li>
+      <li><button class="dot"         data-index="2"  aria-label="Synopsis"></button></li>
+      <li><button class="dot"         data-index="3"  aria-label="Synopsis"></button></li>
+      <li><button class="dot"         data-index="4"  aria-label="Synopsis"></button></li>
+      <li><button class="dot"         data-index="5"  aria-label="Theme"></button></li>
+      <li><button class="dot"         data-index="4"  aria-label="Quinn"></button></li>
+      <li><button class="dot"         data-index="5"  aria-label="Colin"></button></li>
+      <li><button class="dot"         data-index="6"  aria-label="Fiona"></button></li>
+      <li><button class="dot"         data-index="7"  aria-label="Siren"></button></li>
+      <li><button class="dot"         data-index="8"  aria-label="Godfrey"></button></li>
+      <li><button class="dot"         data-index="9"  aria-label="Camera"></button></li>
+      <li><button class="dot"         data-index="10" aria-label="Production Design"></button></li>
+      <li><button class="dot"         data-index="11" aria-label="Music"></button></li>
+      <li><button class="dot"         data-index="12" aria-label="Sound Design"></button></li>
+      <li><button class="dot"         data-index="13" aria-label="Edit"></button></li>
+      <li><button class="dot"         data-index="14" aria-label="About"></button></li>
+      <li><button class="dot"         data-index="15" aria-label="Selected Work"></button></li>
+      <li><button class="dot"         data-index="16" aria-label="Press"></button></li>
+      <li><button class="dot"         data-index="17" aria-label="Contact"></button></li>
+    </ul>
+  </nav>
+
+  <nav id="progress-bar" aria-label="Section progress">
+    <div class="pb-track">
+      <button class="pb-dot active" data-slides="0"  aria-label="Cover"><span class="pb-label">Cover</span></button>
+      <button class="pb-dot"        data-slides="1"  aria-label="Logline"><span class="pb-label">Logline</span></button>
+      <button class="pb-dot"        data-slides="2"  aria-label="Synopsis"><span class="pb-label">Synopsis</span></button>
+      <button class="pb-dot"        data-slides="5"  aria-label="Theme"><span class="pb-label">Theme</span></button>
+      <button class="pb-dot"        data-slides="6"  aria-label="Characters"><span class="pb-label">Characters</span></button>
+      <button class="pb-dot"        data-slides="11" aria-label="Visuals"><span class="pb-label">Visuals</span></button>
+      <button class="pb-dot"        data-slides="14" aria-label="About"><span class="pb-label">About</span></button>
+      <button class="pb-dot"        data-slides="16" aria-label="Contact"><span class="pb-label">Contact</span></button>
+    </div>
+  </nav>
+
+  <div id="slide-counter">
+    <span id="counter-current">01</span>
+    <span class="counter-sep">/</span>
+    <span id="counter-total">12</span>
+  </div>
+
+  <header id="top-nav">
+    <button id="nav-home" data-index="0">DEEP DOWN</button>
+    <span id="nav-brand">Fisherman &amp; Trout</span>
+  </header>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" aria-hidden="true">
+    <div id="lightbox-backdrop"></div>
+    <div id="lightbox-frame">
+      <iframe id="lightbox-iframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen frameborder="0"></iframe>
+    </div>
+    <button id="lightbox-close" aria-label="Close">&#215;</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="fog.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
