@@ -2,6 +2,14 @@
    DEEP DOWN — pitch deck
    ============================================================ */
 
+@font-face {
+  font-family: 'Salium';
+  src: url('fonts/Salium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -12,7 +20,7 @@
   --white35: rgba(255,255,255,0.35);
 
   /* type families */
-  --ff-serif: 'Times New Roman', 'Times', serif;
+  --ff-serif: 'Salium', 'Times New Roman', 'Times', serif;
   --ff-sans:  'Public Sans', 'Helvetica Neue', Arial, sans-serif;
 
   /* ── TYPE SCALE ────────────────────────────────────────────
