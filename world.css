@@ -1,0 +1,299 @@
+/* world.css — DEEP DOWN map navigation */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white:   #f0ece0;
+  --dim:     rgba(240, 236, 224, 0.55);
+  --faint:   rgba(240, 236, 224, 0.28);
+  --ff-serif: 'Times New Roman', Times, serif;
+  --ff-sans:  'Public Sans', 'Helvetica Neue', Arial, sans-serif;
+  --t-label:  0.45rem;
+  --ls:       0.25em;
+  --pad:      4vw;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #03060a;
+  color: var(--white);
+  font-family: var(--ff-sans);
+}
+
+/* ── CANVASES ─────────────────────────────────────────────── */
+
+#map-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+#atmo-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ── TITLE SCREEN ─────────────────────────────────────────── */
+
+#title-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--pad);
+  background: #03060a;
+  pointer-events: none;
+}
+
+.t-writer {
+  font-family: var(--ff-sans);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: var(--ls);
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 1.2rem;
+}
+
+.t-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(5.5rem, 15vw, 13rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.015em;
+  color: var(--white);
+  margin-bottom: 4rem;
+}
+
+.t-hint {
+  font-family: var(--ff-sans);
+  font-size: var(--t-label);
+  font-weight: 400;
+  letter-spacing: var(--ls);
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ── LOCATION PROMPT ──────────────────────────────────────── */
+
+#loc-prompt {
+  position: fixed;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 20px));
+  white-space: nowrap;
+}
+
+#loc-prompt.visible { opacity: 1; }
+
+#loc-name {
+  font-family: var(--ff-sans);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: var(--ls);
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+#loc-key {
+  font-family: var(--ff-sans);
+  font-size: 0.38rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--faint);
+}
+
+/* ── CONTENT PANEL ────────────────────────────────────────── */
+
+#content-panel {
+  position: fixed;
+  top: 0; right: 0;
+  width: clamp(340px, 36vw, 520px);
+  height: 100%;
+  z-index: 60;
+  transform: translateX(110%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(3, 6, 8, 0.88) 12%,
+    rgba(3, 6, 8, 0.97) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem var(--pad) 5rem clamp(2rem, 4vw, 3.5rem);
+}
+
+#content-panel.open {
+  transform: translateX(0);
+}
+
+/* ── CLOSE BUTTON ─────────────────────────────────────────── */
+
+#btn-close {
+  position: absolute;
+  top: 1.6rem;
+  right: var(--pad);
+  background: none;
+  border: none;
+  color: var(--faint);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+  z-index: 1;
+}
+#btn-close:hover { color: var(--white); }
+
+/* ── CONTENT BODY ─────────────────────────────────────────── */
+
+#content-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
+  overflow: hidden;
+}
+
+.panel-tag {
+  font-family: var(--ff-sans);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: var(--ls);
+  text-transform: uppercase;
+  color: var(--faint);
+  line-height: 1;
+}
+
+.panel-char-name {
+  font-family: var(--ff-serif);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.panel-quote {
+  font-family: var(--ff-serif);
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--white);
+  max-width: 400px;
+}
+
+.panel-body {
+  font-family: var(--ff-sans);
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--white);
+  max-width: 380px;
+}
+
+.panel-body + .panel-body {
+  margin-top: 0.8rem;
+}
+
+.panel-work-title {
+  font-family: var(--ff-sans);
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.4;
+}
+
+.panel-work-meta {
+  font-family: var(--ff-sans);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: var(--ls);
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-top: 0.2rem;
+}
+
+.panel-work + .panel-work {
+  margin-top: 1rem;
+}
+
+.panel-contact-group {
+  margin-bottom: 1.4rem;
+}
+
+.panel-contact-agency {
+  font-family: var(--ff-sans);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: var(--ls);
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 0.3rem;
+}
+
+.panel-contact-name {
+  font-family: var(--ff-sans);
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.5;
+}
+
+.panel-contact-email {
+  font-family: var(--ff-sans);
+  font-size: var(--t-label);
+  font-weight: 300;
+  color: var(--dim);
+}
+
+/* ── CONTENT FOOTER ───────────────────────────────────────── */
+
+#content-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-shrink: 0;
+}
+
+#content-footer button {
+  background: none;
+  border: none;
+  color: var(--faint);
+  font-family: var(--ff-sans);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.1rem 0.3rem;
+  transition: color 0.2s;
+  line-height: 1;
+}
+#content-footer button:hover { color: var(--white); }
+#content-footer button:disabled { opacity: 0.15; cursor: default; }
+
+#slide-counter {
+  font-family: var(--ff-sans);
+  font-size: var(--t-label);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+}
