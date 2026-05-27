@@ -821,18 +821,21 @@ class Engine {
 
   _dismissTitle() {
     const t = document.getElementById('title-screen');
+    t.style.transition = 'opacity 1.4s ease';
+    let dismissed = false;
+
     const dismiss = () => {
-      gsap.to(t, {
-        opacity: 0, duration: 1.4, ease: 'power2.inOut',
-        onComplete: () => { t.style.display = 'none'; },
-      });
-      t.removeEventListener('click', dismiss);
+      if (dismissed) return;
+      dismissed = true;
+      t.style.opacity = '0';
+      setTimeout(() => { t.style.display = 'none'; }, 1400);
     };
-    // Auto-dismiss after 4 s, or on any interaction
-    const tid = setTimeout(dismiss, 4000);
-    const early = () => { clearTimeout(tid); dismiss(); };
-    window.addEventListener('keydown', early, { once: true });
-    t.addEventListener('click', dismiss);
+
+    // Auto-dismiss after 3.5 s
+    setTimeout(dismiss, 3500);
+    // Or on any key / click
+    window.addEventListener('keydown', dismiss, { once: true });
+    window.addEventListener('pointerdown', dismiss, { once: true });
   }
 
   _resize() {
