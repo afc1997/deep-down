@@ -11,64 +11,32 @@
 </head>
 <body>
 
-  <!-- SVG FILTER DEFINITION (hidden) -->
-  <svg id="fog-svg" xmlns="http://www.w3.org/2000/svg" width="0" height="0"
-       style="position:absolute;overflow:hidden">
-    <defs>
-      <filter id="fog-filter" x="-20%" y="-20%" width="140%" height="140%"
-              color-interpolation-filters="linearRGB">
-        <feTurbulence
-          id="fog-turb"
-          type="fractalNoise"
-          baseFrequency="0.009 0.006"
-          numOctaves="4"
-          seed="8"
-          result="turb"
-        />
-        <feDisplacementMap
-          id="fog-disp"
-          in="SourceGraphic"
-          in2="turb"
-          scale="180"
-          xChannelSelector="R"
-          yChannelSelector="G"
-          result="displaced"
-        />
-        <feGaussianBlur in="displaced" stdDeviation="12"/>
-      </filter>
-    </defs>
-  </svg>
-
   <div id="deck">
-
-    <!-- FOG LIVES INSIDE DECK so it can sit between bg images and text -->
-    <div id="fog-layer">
-      <div class="fog-bank fog-b1"></div>
-      <div class="fog-bank fog-b2"></div>
-      <div class="fog-bank fog-b3"></div>
-      <div class="fog-bank fog-b4"></div>
-    </div>
-    <div id="fog-transition"></div>
 
     <!-- 0 · COVER -->
     <section class="slide active" id="slide-cover">
       <div class="slide-bg"></div>
       <div class="slide-content lay-center">
-        <p class="slide-writer">A film by Fisherman &amp; Trout</p>
         <h1 class="cover-title">Deep<br>Down</h1>
+        <div class="cover-byline-block">
+          <p class="cover-byline">By Fisherman &amp; Trout</p>
+        </div>
       </div>
 
     </section>
 
     <!-- 1 · LOGLINE -->
     <section class="slide" id="slide-logline">
-      <div class="slide-bg"></div>
+      <div class="slide-bg">
+        <video class="slide-bg-video" src="Assets/logline-loop-10s.mp4"
+               autoplay muted loop playsinline preload="auto"></video>
+      </div>
       <div class="slide-content lay-center-block">
         <div class="logline-block">
         <span class="slide-tag">Logline</span>
         <p class="logline-text">
           Amid the Scottish highlands, a drifter seeks shelter in a rotting village where
-          a siren's call from the town's well drags him into obsession and terror.
+          a siren's call from the town's well lures him towards his darkest desires.
         </p>
         </div>
       </div>
@@ -80,7 +48,8 @@
       <div class="slide-content lay-mid-left">
         <span class="slide-tag">Synopsis</span>
         <div class="body-col">
-          <p>Deep Down is a dark fable following Quinn, a wounded American drifter on the run from past crimes, who finds himself in the remote Scottish village of Freuhman. Looking for a chance of anonymity and enough cash to escape the isle, Quinn finds shelter on a rotting farm with Godfrey, a paranoid old recluse. As Quinn gets entangled with the townsfolk; something otherworldly stirs beneath the soil. Deep within the farmer's well, a Siren calls to him.</p>
+          <p class="drop-cap">Deep Down is a dark fable following Quinn, a wounded American drifter on the run from past crimes, who finds himself in the remote Scottish village of Freuhman.</p>
+          <p>Looking for a chance of anonymity and enough cash to escape the isle, Quinn finds shelter on a rotting farm with Godfrey, a paranoid old recluse.</p>
         </div>
       </div>
     </section>
@@ -89,27 +58,35 @@
     <section class="slide" id="slide-synopsis-2">
       <div class="slide-bg"></div>
       <div class="slide-content lay-center-block">
-        <p class="synopsis-quote">Visions begin to plague him: dreams of this beautiful yet inhuman creature calling from the depths, tempting him toward her night after night.</p>
+        <p class="synopsis-quote">But one night, he finds deep within the farmer's well, a Siren. Visions begin to plague him: dreams of this beautiful yet inhuman creature calling from the depths, tempting him toward her night after night.</p>
       </div>
     </section>
 
     <!-- 4 · SYNOPSIS 3 -->
     <section class="slide" id="slide-synopsis-3">
       <div class="slide-bg"></div>
-      <div class="slide-content lay-mid-right">
+      <div class="slide-content lay-mid-left">
         <div class="body-col">
-          <p>As Quinn tries to escape the siren's grasp, he becomes entangled with the villagers, each carrying secrets and shame of their own. But as Quinn repeats his past mistakes, he succumbs to his temptation, infecting the town, causing women across Freuhman, young and old, to become suddenly and violently pregnant. Their bodies overtaken by something they cannot control.</p>
+          <p class="drop-cap">As Quinn tries to escape the siren's grasp, he becomes entangled with the villagers, each carrying secrets and shame of their own.</p>
+          <p>But as Quinn repeats his past mistakes, he succumbs to his temptation, infecting Freuhman, causing women across Freuhman, young and old, to become suddenly and violently pregnant. Their bodies are overtaken by something they cannot control.</p>
+          <p>The town soon realizes Quinn is to blame for this curse.</p>
         </div>
       </div>
     </section>
 
     <!-- 5 · THEME -->
     <section class="slide" id="slide-theme">
-      <div class="slide-bg"></div>
+      <div class="slide-bg">
+        <video class="slide-bg-video" src="Assets/under the skin.mp4"
+               autoplay muted loop playsinline preload="auto"></video>
+      </div>
       <div class="slide-content lay-mid-left">
         <span class="slide-tag">Theme</span>
         <div class="body-col">
-          <p>Deep Down presents a mystery about trauma, male repression, and the slow collapse of identity. For us, Quinn's journey is an allegory for the corrosive effects of shame, in particular, the shame of lust in men. Lust in this story is not romantic or freeing; it's haunting, spectral, and tied to Quinn's sense of self-loathing. The woman from the well is a manifestation of his forbidden thoughts, of the things he was told to repress as a soldier, as a man, as someone trying desperately to appear "normal" in a world that doesn't have space for him.</p>
+          <p class="drop-cap">This isn't really a movie about a man who discovers a monster, it is a movie about how the monsters we carry will <em>destroy us…</em> if we let them.</p>
+          <p>With this film, we set out to explore the corrosive nature of shame. We wanted to examine how running from guilt only causes it to balloon inside us, trapping us in a self-fulfilling prophecy: <em>I am bad because I have done bad, and therefore I will always be bad.</em></p>
+          <p>The entity in the well is a physical manifestation of Quinn's suppressed desires, his self-loathing, and his tendency to choose short-term comfort over real commitment. Surrounding him, the townspeople serve as a mirror, each reflecting a different facet of shame.</p>
+          <p>Ultimately, our goal is to anchor the audience inside Quinn's emotional reality. To tell a story where the internal becomes external. A journey from deep self-hatred and fear of the past toward a place of acceptance, vulnerability, and maturity.</p>
         </div>
       </div>
     </section>
@@ -119,25 +96,28 @@
       <div class="slide-bg"></div>
       <div class="slide-content lay-split">
         <div class="char-label-col">
-<h2 class="char-name">Quinn</h2>
+          <h2 class="char-name">Quinn</h2>
         </div>
         <div class="char-desc-col">
-          <p>Rugged, lean, eyes like a starving coyote. Vietnam veteran, now two years drifting Europe by train and foot. He arrives in Freumhan with a bleeding right hand, a green military pack, and no reason to stop — but something about this rotten corner of Scotland won't let him leave.</p>
-          <p>Quinn operates through charm and neediness in equal measure. He works hard, drinks harder, and looks at things he shouldn't. He's running from whatever happened on that Edinburgh street. The well is the first honest thing he's found.</p>
+          <p>An American Navy vet on the run from his own guilt, landing in the damp isolation of Freumhan. He tries to bury his past through drinking, distance, and avoiding responsibility at all costs.</p>
+          <p>But just as he begins to form real connection and reach for redemption, the siren emerges. Tempting him to abandon his progress and repeat his past mistakes.</p>
         </div>
       </div>
     </section>
 
-    <!-- 7 · COLIN -->
-    <section class="slide" id="slide-colin">
-      <div class="slide-bg"></div>
+    <!-- 7 · GODFREY -->
+    <section class="slide" id="slide-godfrey">
+      <div class="slide-bg">
+        <video class="slide-bg-video" src="Assets/Godfrey.mp4"
+               autoplay muted loop playsinline preload="auto"></video>
+      </div>
       <div class="slide-content lay-split">
         <div class="char-label-col">
-<h2 class="char-name">Colin</h2>
+          <h2 class="char-name">Godfrey</h2>
         </div>
         <div class="char-desc-col">
-          <p>Wide and tall. Dressed all in black. A dark beard hides his face. He enters rooms like a bear in search of honey — slowly, casually, but with total intention. He already knows Quinn is a soldier when they meet. He already knows about the military pack.</p>
-          <p>Colin is connected to the factory, connected to Fiona, connected to a web of knowledge he volunteers slowly, a piece at a time. He's the town's center of gravity and he knows it.</p>
+          <p>A frail 75-year-old farmer rotting alongside his fungus-tainted barley fields.</p>
+          <p>Bound to his crumbling land by a strange sense of obligation, he swings unpredictably between quiet hospitality and sudden, paranoid violence.</p>
         </div>
       </div>
     </section>
@@ -147,50 +127,57 @@
       <div class="slide-bg"></div>
       <div class="slide-content lay-split">
         <div class="char-label-col">
-<h2 class="char-name">Fiona</h2>
+          <h2 class="char-name">Fiona</h2>
         </div>
         <div class="char-desc-col">
-          <p>Light brown hair, big hazel eyes. Unmistakably beautiful. She works the pub, hauls the deliveries alone down the road, lives two doors down from the bar her mother runs. She's never been anywhere else and she knows exactly what that means.</p>
-          <p>"I'm stuck knowing I'm Scottish." She says it laughing, but she means it. Quinn is the first person who's looked at Freumhan and called it beautiful. She doesn't know whether to trust that.</p>
+          <p>A 25-year-old pub worker stranded in a dead-end village. Raised by her grandmother after being abandoned, she harbors a quiet desperation to escape.</p>
+          <p>She reaches out to Quinn as a link to the outside world, offering genuine connection only to be caught in the collateral damage of his psychological unraveling.</p>
         </div>
       </div>
     </section>
 
-    <!-- 9 · THE WOMAN -->
+    <!-- 9 · COLIN -->
+    <section class="slide" id="slide-colin">
+      <div class="slide-bg"></div>
+      <div class="slide-content lay-split">
+        <div class="char-label-col">
+          <h2 class="char-name">Colin</h2>
+        </div>
+        <div class="char-desc-col">
+          <p>A boisterous war veteran and town leader who uses easy charm to mask a dangerous, controlling edge.</p>
+          <p>He steps into Quinn's life as a welcoming mentor. Offering work, drinks, and war stories—while hiding a violent, abusive side behind closed doors.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · THE WOMAN -->
     <section class="slide" id="slide-woman">
-      <div class="slide-bg"></div>
-      <div class="slide-content lay-split">
-        <div class="char-label-col">
-<h2 class="char-name">Siren</h2>
-        </div>
-        <div class="char-desc-col">
-          <p>Porcelain white skin. Jet black hair, slicked by water. Big white eyes ringed in black. She stands naked at the bottom of Godfrey's stone well, holding the bucket in both hands, and looks up at Quinn.</p>
-          <p>She smiles. She disappears. Godfrey says the tainted land does this — poisons the mind, makes men see things. Her portrait, black and white and old, sits on Godfrey's bedside table. Quinn steals the flask from beside it.</p>
-        </div>
+      <div class="slide-bg">
+        <video class="slide-bg-video" src="Assets/siren.mp4"
+               poster="Assets/Siren2.webp" autoplay muted loop playsinline preload="auto"></video>
       </div>
-    </section>
-
-    <!-- 10 · GODFREY -->
-    <section class="slide" id="slide-godfrey">
-      <div class="slide-bg"></div>
       <div class="slide-content lay-split">
         <div class="char-label-col">
-<h2 class="char-name">Godfrey</h2>
+          <h2 class="char-name">Siren</h2>
         </div>
         <div class="char-desc-col">
-          <p>Small, frail, wrinkles as deep as cuts. He plows his diseased fields alone. His silver pearlescent flask never leaves his pocket. He covers the well. He hasn't lived anywhere else since before the first war. "The big one."</p>
-          <p>"Got things here. Obligations of the earth that keep me BOUND." He can erupt without warning — slaps Quinn in the face, grabs him by the collar, then sets supper on the table thirty minutes later. The farm is dying. He won't leave. Something in the well is the reason.</p>
+          <p>An ethereal threat waiting in the dark water of Godfrey's well.</p>
+          <p>Hypnotic and porcelain-skinned, she preys on Quinn's lust, using surreal visions and a distorted hum to slowly pull him out of reality and into the dark.</p>
         </div>
       </div>
     </section>
 
     <!-- 11 · CAMERA -->
     <section class="slide" id="slide-camera">
-      <div class="slide-bg"></div>
+      <div class="slide-bg">
+        <video class="slide-bg-video" src="Assets/camera-reference.mp4"
+               autoplay muted loop playsinline preload="auto"></video>
+      </div>
       <div class="slide-content lay-mid-left">
         <span class="slide-tag">Camera</span>
         <div class="body-col">
-          <p>Handheld but controlled — the camera lives close to Quinn, close enough to smell sweat and soil. Wide lenses on exteriors so the Scottish landscape swallows figures whole. Rack focus into fog; let backgrounds dissolve. Flashlight cinematography for night sequences. The well is always shot from above: one circular beam into black water.</p>
+          <p>Our camera should feel haunting. Covered in mist, darkness, always presenting even the most impossible circumstances as objectively real.</p>
+          <p>We want the visuals to transmit the feeling that this town is rotting away. Thick grain, deep focus, incredibly textural.</p>
         </div>
       </div>
     </section>
@@ -198,11 +185,12 @@
     <!-- 12 · PRODUCTION DESIGN -->
     <section class="slide" id="slide-production">
       <div class="slide-bg"></div>
-      <div class="slide-content lay-mid-right">
+      <div class="slide-content lay-mid-left">
         <div class="logline-block">
           <span class="slide-tag">Production Design</span>
           <div class="body-col">
-            <p>Scotland, 1971. Cobblestone farmhouses half-sunk into the earth. Hay-roofed buildings. A concrete factory chimney that screams. Yellow barley heavy with black fungus. Hand-carved chairs without tables. Cracked glasses caked in dust. The silver pearlescent flask. The faded portrait of The Woman, black-and-white and old as the well.</p>
+            <p>Scotland. Cobblestone farmhouses half-sunk into the earth. Hay-roofed buildings. A concrete factory chimney that screams.</p>
+            <p>Yellow barley heavy with black fungus. Hand-carved chairs without tables. Cracked glasses caked in dust. The silver pearlescent flask. The faded portrait of The Woman, black-and-white and old as the well.</p>
           </div>
         </div>
       </div>
@@ -210,35 +198,15 @@
 
     <!-- 13 · MUSIC -->
     <section class="slide" id="slide-music">
-      <div class="slide-bg"></div>
+      <div class="slide-bg">
+        <video class="slide-bg-video" src="Assets/under the skin2.mp4"
+               autoplay muted loop playsinline preload="auto"></video>
+      </div>
       <div class="slide-content lay-mid-left">
         <span class="slide-tag">Music</span>
         <div class="body-col">
-          <p>Penderecki-esque strings — the script calls for them by name at the title card. Dissonant, ancient, not decorative. Sound as physical sensation. Scottish folk melody at its most corroded edge. Silence used as an instrument. The well has its own sound.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 14 · SOUND DESIGN -->
-    <section class="slide" id="slide-sound">
-      <div class="slide-bg"></div>
-      <div class="slide-content lay-mid-right">
-        <div class="logline-block">
-          <span class="slide-tag">Sound Design</span>
-          <div class="body-col">
-            <p>The factory screams in industrial agony. Leather boots on cobblestone. Water splashing in pitch black. The sheep's BAAAA cutting through the night. Sirens that overtake all sound. Wind rushing over the highlands. The soil is never fully quiet. Everything in Freumhan has a sound underneath it.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 15 · EDIT -->
-    <section class="slide" id="slide-edit">
-      <div class="slide-bg"></div>
-      <div class="slide-content lay-mid-left">
-        <span class="slide-tag">Edit</span>
-        <div class="body-col">
-          <p>Slow. Patient. Let silences breathe until the audience holds their breath. The script's key editorial device: "ALL OF THE FOLLOWING HAPPENS WITHIN A MOMENT; A BRIEF GLANCE." The film moves at the pace of farm labor — then cuts like a knife. The well sequences are pure montage: darkness, a beam, a face.</p>
+          <p>We want something abrasive and atonal, built from drones and dissonant strings that sit underneath every scene like something is wrong.</p>
+          <p>The music should feel like a combination between industrial and folkloric. Alluding to both the closed down factory and the mythical elements within the film.</p>
         </div>
       </div>
     </section>
@@ -246,11 +214,11 @@
     <!-- 16 · ABOUT 1 — bio -->
     <section class="slide" id="slide-about-1">
       <div class="slide-bg"></div>
-      <div class="slide-content lay-mid-right">
+      <div class="slide-content lay-mid-left">
         <div class="logline-block">
           <span class="slide-tag">Fisherman &amp; Trout</span>
           <div class="about-bio">
-            <p>Alex Fischman Cárdenas and Trout Cohen are a writer-director duo who met at a urinal on their first day at NYU. Their work has earned Vimeo Staff Picks and screened at Sundance, Clermont-Ferrand, Sitges, and AFI Fest.</p>
+            <p>Alex Fischman Cárdenas and Trout Cohen are a writer-director duo who met at a urinal on their first day at NYU. Since then, they've collaborated on narrative projects blending genre storytelling with surreal themes. Their work has earned Vimeo Staff Picks and screened at festivals such as Sundance, Clermont-Ferrand, Sitges, and AFI Fest.</p>
           </div>
         </div>
       </div>
@@ -324,20 +292,17 @@
       <li><button class="dot"         data-index="3"  aria-label="Synopsis"></button></li>
       <li><button class="dot"         data-index="4"  aria-label="Synopsis"></button></li>
       <li><button class="dot"         data-index="5"  aria-label="Theme"></button></li>
-      <li><button class="dot"         data-index="4"  aria-label="Quinn"></button></li>
-      <li><button class="dot"         data-index="5"  aria-label="Colin"></button></li>
-      <li><button class="dot"         data-index="6"  aria-label="Fiona"></button></li>
-      <li><button class="dot"         data-index="7"  aria-label="Siren"></button></li>
-      <li><button class="dot"         data-index="8"  aria-label="Godfrey"></button></li>
-      <li><button class="dot"         data-index="9"  aria-label="Camera"></button></li>
-      <li><button class="dot"         data-index="10" aria-label="Production Design"></button></li>
-      <li><button class="dot"         data-index="11" aria-label="Music"></button></li>
-      <li><button class="dot"         data-index="12" aria-label="Sound Design"></button></li>
-      <li><button class="dot"         data-index="13" aria-label="Edit"></button></li>
+      <li><button class="dot"         data-index="6"  aria-label="Quinn"></button></li>
+      <li><button class="dot"         data-index="7"  aria-label="Godfrey"></button></li>
+      <li><button class="dot"         data-index="8"  aria-label="Fiona"></button></li>
+      <li><button class="dot"         data-index="9"  aria-label="Colin"></button></li>
+      <li><button class="dot"         data-index="10" aria-label="Siren"></button></li>
+      <li><button class="dot"         data-index="11" aria-label="Camera"></button></li>
+      <li><button class="dot"         data-index="12" aria-label="Production Design"></button></li>
+      <li><button class="dot"         data-index="13" aria-label="Music"></button></li>
       <li><button class="dot"         data-index="14" aria-label="About"></button></li>
       <li><button class="dot"         data-index="15" aria-label="Selected Work"></button></li>
-      <li><button class="dot"         data-index="16" aria-label="Press"></button></li>
-      <li><button class="dot"         data-index="17" aria-label="Contact"></button></li>
+      <li><button class="dot"         data-index="16" aria-label="Contact"></button></li>
     </ul>
   </nav>
 
@@ -374,8 +339,6 @@
     <button id="lightbox-close" aria-label="Close">&#215;</button>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="fog.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

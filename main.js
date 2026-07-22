@@ -1,11 +1,8 @@
 /**
- * DEEP DOWN — section navigation + fog transitions
+ * DEEP DOWN — section navigation
  *
- * Transition timeline (total ~1.3s):
- *   0.00s  fog ramps in  (fogProgress 0 → 1, ease power2.in)
- *   0.52s  slide swap at fog peak
- *   0.55s  fog clears    (fogProgress 1 → 0, ease power2.out)
- *   1.30s  done
+ * Slides cross-dissolve: the outgoing slide fades out as the incoming
+ * one fades in, driven purely by the CSS opacity transition on .slide.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const PB_DOTS  = Array.from(document.querySelectorAll('.pb-dot'));
 
   /* which section dot owns each slide index */
-  const SLIDE_TO_SECTION = [0,1,2,2,2,3,4,4,4,4,4,5,5,5,5,5,6,6,7];
+  const SLIDE_TO_SECTION = [0,1,2,2,2,3,4,4,4,4,4,5,5,5,6,6,7];
 
   const progressBar = document.getElementById('progress-bar');
   const topNav      = document.getElementById('top-nav');
@@ -40,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let current      = 0;
   let isTransiting = false;
+  const XFADE_MS   = 700;   /* keep in step with the .slide opacity transition */
 
   /* ── GOTO ─────────────────────────────────────────────── */
   function goTo(next) {
@@ -54,32 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
     counter.textContent = String(current + 1).padStart(2, '0');
     updateProgress(current);
 
-    /* tell fog system to push camera forward */
-    fogSystem.advanceCamera(current, TOTAL);
+    /* cross-dissolve: CSS handles the opacity fade on both slides */
+    SLIDES[from].classList.remove('active');
+    SLIDES[next].classList.add('active');
 
-    /* animate with GSAP proxy object */
-    const proxy = { fog: 0 };
-
-    gsap.timeline({ onComplete: () => { isTransiting = false; } })
-      /* ① fog rolls IN */
-      .to(proxy, {
-        fog: 0.82,
-        duration: 0.65,
-        ease: 'power2.in',
-        onUpdate: () => fogSystem.setFogProgress(proxy.fog),
-      })
-      /* ② swap slides at peak */
-      .call(() => {
-        SLIDES[from].classList.remove('active');
-        SLIDES[next].classList.add('active');
-      })
-      /* ③ fog rolls OUT */
-      .to(proxy, {
-        fog: 0,
-        duration: 0.95,
-        ease: 'power2.out',
-        onUpdate: () => fogSystem.setFogProgress(proxy.fog),
-      });
+    setTimeout(() => { isTransiting = false; }, XFADE_MS);
   }
 
   /* ── INPUT: WHEEL ─────────────────────────────────────── */
@@ -185,3 +162,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+

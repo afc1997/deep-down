@@ -13,11 +13,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* colours — white only, no yellow, no gray */
+  /* colours */
   --black:   #08090a;
-  --white:   #ffffff;
-  --white70: rgba(255,255,255,0.70);
-  --white35: rgba(255,255,255,0.35);
+  --white:   #f0e6d0;
+  --white70: rgba(240,230,208,0.70);
+  --white35: rgba(240,230,208,0.35);
 
   /* type families */
   --ff-serif: 'IM Fell English', 'Times New Roman', 'Times', serif;
@@ -35,14 +35,14 @@
   --t-display: clamp(4rem, 9vw, 8rem);
   --t-hero:    clamp(5.5rem, 15vw, 13rem);
 
-  --lh-body:   1.5;
+  --lh-body:   1.38;
   --ls-label:  0.28em;
 
   /* layout */
   --nav-h:   3.5rem;
   --pad-x:   4vw;          /* consistent horizontal margin everywhere */
   --pad-b:   2.5rem;       /* consistent bottom margin */
-  --col-max: 440px;        /* max line-length for body text */
+  --col-max: 360px;        /* max line-length for body text */
 }
 
 html, body {
@@ -66,7 +66,7 @@ html, body {
   justify-content: space-between;
   padding: 0 var(--pad-x);
   background: linear-gradient(to bottom,
-    rgba(6,7,5,0.85) 0%,
+    rgba(6,7,5,0.085) 0%,
     rgba(6,7,5,0.0)  100%
   );
   pointer-events: none;
@@ -79,10 +79,10 @@ html, body {
 }
 
 #nav-home {
-  font-family: var(--ff-sans);
-  font-size: var(--t-label);
+  font-family: var(--ff-serif);
+  font-size: 0.45rem;
   font-weight: 500;
-  letter-spacing: var(--ls-label);
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--white);
   background: none;
@@ -95,85 +95,12 @@ html, body {
 #nav-home:hover { opacity: 0.6; }
 
 #nav-brand {
-  font-family: var(--ff-sans);
-  font-size: var(--t-label);
+  font-family: var(--ff-serif);
+  font-size: 0.45rem;
   font-weight: 400;
-  letter-spacing: var(--ls-label);
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--white70);
-}
-
-/* ── ATMOSPHERIC FOG ─────────────────────────────────────── */
-
-#fog-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  pointer-events: none;
-  filter: url(#fog-filter);
-  opacity: 0;
-}
-
-.fog-bank { position: absolute; border-radius: 50%; }
-
-.fog-b1 {
-  width: 160vw; height: 75vh;
-  background: radial-gradient(ellipse 80% 65%,
-    rgba(88,96,82,0.92) 0%, rgba(68,76,63,0.55) 45%, transparent 70%);
-  bottom: -10vh; left: -30vw;
-  animation: fogDrift1 34s ease-in-out infinite alternate;
-}
-.fog-b2 {
-  width: 140vw; height: 65vh;
-  background: radial-gradient(ellipse 75% 60%,
-    rgba(75,84,70,0.85) 0%, rgba(58,66,53,0.45) 50%, transparent 72%);
-  top: 20vh; right: -25vw;
-  animation: fogDrift2 44s ease-in-out infinite alternate;
-}
-.fog-b3 {
-  width: 130vw; height: 55vh;
-  background: radial-gradient(ellipse 70% 55%,
-    rgba(100,108,94,0.78) 0%, rgba(78,86,73,0.38) 50%, transparent 72%);
-  top: -8vh; left: 5vw;
-  animation: fogDrift3 26s ease-in-out infinite alternate;
-}
-.fog-b4 {
-  width: 100vw; height: 100vh;
-  top: 0; left: 0;
-  background:
-    radial-gradient(ellipse at 25% 70%, rgba(82,90,77,0.60) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 25%, rgba(68,76,63,0.48) 0%, transparent 52%),
-    radial-gradient(ellipse at 50% 50%, rgba(58,66,53,0.32) 0%, transparent 70%);
-  animation: fogDrift4 52s ease-in-out infinite alternate;
-}
-
-@keyframes fogDrift1 {
-  from { transform: translate(0,    0)    scale(1);    }
-  to   { transform: translate(12vw,-6vh)  scale(1.08); }
-}
-@keyframes fogDrift2 {
-  from { transform: translate(0,   0)    scale(1.04); }
-  to   { transform: translate(-9vw,7vh)  scale(0.96); }
-}
-@keyframes fogDrift3 {
-  from { transform: translate(0,    0)   scale(0.97); }
-  to   { transform: translate(15vw, 4vh) scale(1.06); }
-}
-@keyframes fogDrift4 {
-  from { transform: translate(0,   0)    scale(1);    }
-  to   { transform: translate(-5vw,3vh)  scale(1.03); }
-}
-
-/* ── TRANSITION OVERLAY ──────────────────────────────────── */
-
-#fog-transition {
-  position: absolute;
-  inset: 0;
-  z-index: 80;
-  pointer-events: none;
-  opacity: 0;
-  background: rgb(18,22,16);
-  filter: url(#fog-filter);
 }
 
 /* ── DECK + SLIDES ───────────────────────────────────────── */
@@ -186,8 +113,13 @@ html, body {
   opacity: 0;
   pointer-events: none;
   background: none;
+  transition: opacity 0.7s ease;   /* cross-dissolve between slides */
 }
 .slide.active { opacity: 1; pointer-events: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide { transition: opacity 0.01ms; }
+}
 
 /* ── BACKGROUND IMAGE LAYER (z:0) ────────────────────────── */
 
@@ -205,31 +137,52 @@ html, body {
   position: absolute;
   inset: 0;
   background: linear-gradient(160deg,
-    rgba(6,7,5,0.78) 0%, rgba(8,9,7,0.62) 50%, rgba(5,6,4,0.80) 100%);
+    rgba(6,7,5,0.078) 0%, rgba(8,9,7,0.062) 50%, rgba(5,6,4,0.080) 100%);
 }
 
-#slide-cover     .slide-bg { background-image: url("Assets/The Voice of the Moon - 1990.png"); transform: scaleX(-1); }
-#slide-logline   .slide-bg { background-image: url("Assets/e9ox95x6y9zc1.png"); }
-#slide-synopsis-1 .slide-bg { background-image: url("Assets/Come and See - 1986.png"); }
-#slide-synopsis-2 .slide-bg { background-image: url("Assets/Big Fish - 2004.png"); }
-#slide-synopsis-3 .slide-bg { background-image: url("Assets/The Northman - 2022.png"); }
-#slide-theme     .slide-bg { background-image: url("Assets/Outside Satan - 2011.png"); }
-#slide-quinn     .slide-bg { background-image: url("Assets/Ain't Them Bodies Saints - 2013.png"); }
-#slide-colin     .slide-bg { background-image: url("Assets/The Northman - 2022.png"); }
-#slide-fiona     .slide-bg { background-image: url("Assets/The Beguiled - 2017.png"); }
+#slide-cover     .slide-bg {
+  background-image: url("Assets/The Voice of the Moon - 1990 (1).png");
+  transform: scaleX(-1);
+}
+#slide-cover .slide-bg::after { display: none; }
+#slide-logline   .slide-bg { background: #050605; }
+.slide-bg-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+#slide-synopsis-1 .slide-bg { background-image: url("Assets/An American Werewolf in London - 1981 copy.png"); }
+#slide-synopsis-2 .slide-bg { background-image: url("Assets/YATAY - The Circle Of Life (1).png"); }
+#slide-synopsis-3 .slide-bg { background-image: url("Assets/Chapelwaite - Memento Mori (1).png"); }
+#slide-synopsis-2 .slide-content {
+  justify-content: center;
+  align-items: center;
+}
+#slide-synopsis-3 .slide-bg::after {
+  background: linear-gradient(160deg,
+    rgba(6,7,5,0.234) 0%, rgba(8,9,7,0.186) 50%, rgba(5,6,4,0.240) 100%);
+}
+#slide-theme     .slide-bg { background: #050605; }
+#slide-theme     .slide-bg-video { transform: scaleX(-1); }
+#slide-quinn     .slide-bg { background-image: url("Assets/Children of Men - 2006.png"); }
+#slide-colin     .slide-bg { background-image: url("Assets/The Banshees of Inisherin - 2022 (1) copy 3.png"); }
+#slide-fiona     .slide-bg { background-image: url("Assets/The Nightingale - 2018.png"); }
 #slide-woman     .slide-bg { background-image: url("Assets/Lost Souls - 2001.png"); }
 #slide-godfrey   .slide-bg { background-image: url("Assets/Darby O'Gill and the Little People - 1960.png"); }
 #slide-camera     .slide-bg { background-image: url("Assets/Interstellar - 2014.png"); }
-#slide-production .slide-bg { background-image: url("Assets/Ain't Them Bodies Saints - 2013.png"); }
+#slide-production .slide-bg { background-image: url("Assets/Peaky Blinders - Black Day.png"); transform: scaleX(-1); }
 #slide-music      .slide-bg { background-image: url("Assets/Dark - Secrets.png"); }
 #slide-sound      .slide-bg { background-image: url("Assets/Uncle Boonmee Who Can Recall His Past Lives - 2010.png"); }
 #slide-edit       .slide-bg { background-image: url("Assets/John and the Hole - 2021.png"); }
-#slide-about-1   .slide-bg { background: radial-gradient(ellipse at 40% 50%, #0e100c 0%, #050605 100%); }
+#slide-about-1   .slide-bg { background-image: url("Assets/Fisherman & Trout.jpg"); }
+#slide-about-1   .slide-bg::after {
+  background: rgba(2,3,2,0.65);
+}
 #slide-about-2   .slide-bg { background: radial-gradient(ellipse at 40% 50%, #0e100c 0%, #050605 100%); }
 #slide-about-3   .slide-bg { background: radial-gradient(ellipse at 40% 50%, #0e100c 0%, #050605 100%); }
 #slide-contact   .slide-bg { background: radial-gradient(ellipse at 60% 50%, #0e100c 0%, #050605 100%); }
 
-/* ── SLIDE CONTENT (z:10, above fog z:5) ─────────────────── */
+/* ── SLIDE CONTENT (z:10, above the background) ──────────── */
 
 .slide-content {
   position: relative;
@@ -243,42 +196,43 @@ html, body {
 
 /* ── LAYOUT SYSTEM ───────────────────────────────────────── */
 
-/* anchor: every standard slide — text pinned bottom-left     */
-.lay-anchor {
-  justify-content: flex-end;
-  padding-bottom: var(--pad-b);
-}
-
 /* rule-break: logline + visions quote — block centered       */
 .lay-center-block { justify-content: center; align-items: center; }
 
 /* cover only */
 .lay-center { justify-content: center; }
 
-/* synopsis variants */
+/* every other content slide: vertically centered, left-aligned */
 .lay-mid-left  { justify-content: center; }
-.lay-mid-right { justify-content: center; align-items: flex-end; }
 
+/* characters: name + bio side by side on web, stacked + centered on mobile */
 .lay-split     { flex-direction: row; align-items: center; justify-content: space-between; }
+
 .logline-block { display: flex; flex-direction: column; max-width: 520px; }
 
 /* ── LABEL — tier 1 ──────────────────────────────────────── */
 
 .slide-tag {
   display: block;
-  font-family: var(--ff-sans);
-  font-size: var(--t-label);
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
+  font-family: var(--ff-serif);
+  font-size: clamp(0.9rem, 1.4vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--white70);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.1rem;
   line-height: 1;
+}
+
+.slide-tag::after {
+  content: " \2014";   /* em dash */
+  letter-spacing: 0;
+  opacity: 0.55;
 }
 
 .char-vitals {
   display: block;
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: var(--t-label);
   font-weight: 400;
   letter-spacing: var(--ls-label);
@@ -289,7 +243,7 @@ html, body {
 
 .slide-writer,
 .slide-author {
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: var(--t-label);
   font-weight: 400;
   letter-spacing: var(--ls-label);
@@ -300,7 +254,7 @@ html, body {
 .slide-author { margin-top: 1.8rem; }
 
 .contact-script {
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: var(--t-label);
   font-weight: 400;
   letter-spacing: var(--ls-label);
@@ -322,8 +276,6 @@ html, body {
 
 .body-col p,
 .char-desc-col p,
-.vis-panel p,
-.theme-body,
 .contact-detail {
   font-family: var(--ff-sans);
   font-size: var(--t-body);
@@ -333,9 +285,9 @@ html, body {
   max-width: var(--col-max);
 }
 
-.body-col p           { margin-bottom: 1.2rem; }
+.body-col p           { margin-bottom: 0.55rem; text-wrap: pretty; }
 .body-col p:last-child { margin-bottom: 0; }
-.char-desc-col p      { margin-bottom: 1.1rem; }
+.char-desc-col p      { margin-bottom: 0.55rem; text-wrap: pretty; }
 .char-desc-col p:last-child { margin-bottom: 0; }
 .contact-grid {
   display: flex;
@@ -347,7 +299,7 @@ html, body {
 .contact-group { display: flex; flex-direction: column; gap: 0.2rem; }
 
 .contact-agency {
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: var(--t-label);
   font-weight: 500;
   letter-spacing: var(--ls-label);
@@ -377,6 +329,7 @@ html, body {
   line-height: 1.2;
   color: var(--white);
   max-width: 700px;
+  text-wrap: pretty;
 }
 
 .theme-quote {
@@ -443,6 +396,7 @@ html, body {
   line-height: 1.2;
   color: var(--white);
   max-width: 640px;
+  text-wrap: pretty;
 }
 
 /* ── SYNOPSIS COLUMNS ────────────────────────────────────── */
@@ -473,10 +427,62 @@ html, body {
   .synopsis-cols { column-count: 1; }
 }
 
+/* ── DROP CAP ────────────────────────────────────────────── */
+
+.drop-cap::first-letter {
+  font-family: var(--ff-serif);
+  font-size: 4.4em;
+  float: left;
+  line-height: 0.76;
+  margin-right: 0.07em;
+  margin-top: 0.06em;
+  color: var(--white);
+}
+
+/* ── TWO-COLUMN BODY ─────────────────────────────────────── */
+
+.body-col--two-col {
+  column-count: 2;
+  column-gap: 4.5vw;
+  column-rule: 1px solid var(--white35);
+  max-width: 860px;
+}
+
+/* ── COVER BYLINE ────────────────────────────────────────── */
+
+.cover-byline-block {
+  margin-top: 1.4rem;
+  max-width: 580px;
+}
+
+.cover-byline {
+  font-family: var(--ff-serif);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-style: italic;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--white70);
+}
+
+
 /* ── CHARACTERS ──────────────────────────────────────────── */
 
 .char-label-col { flex: 0 0 auto; }
 .char-desc-col  { flex: 0 0 var(--col-max); max-width: var(--col-max); text-align: left; }
+
+#slide-quinn .char-desc-col {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem;
+}
+
+#slide-quinn .char-desc-col::before {
+  content: "";
+  position: absolute;
+  inset: -2.5rem;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0) 80%);
+}
 
 /* ── ABOUT ───────────────────────────────────────────────── */
 
@@ -500,7 +506,7 @@ html, body {
 }
 
 .about-section-label {
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: var(--t-label);
   font-weight: 500;
   letter-spacing: var(--ls-label);
@@ -515,6 +521,7 @@ html, body {
   display: flex;
   gap: 3vw;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .work-thumb {
@@ -563,7 +570,7 @@ html, body {
 }
 
 .work-thumb-meta {
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: var(--t-label);
   font-weight: 500;
   letter-spacing: var(--ls-label);
@@ -600,7 +607,7 @@ html, body {
 
 .about-press-outlet {
   display: block;
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: var(--t-label);
   font-weight: 400;
   letter-spacing: var(--ls-label);
@@ -739,7 +746,7 @@ html, body {
 .pb-dot:last-child { align-items: flex-end; }
 
 .pb-label {
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: 0.45rem;
   font-weight: 500;
   letter-spacing: 0.25em;
@@ -784,7 +791,7 @@ html, body {
   bottom: var(--pad-b);
   right: var(--pad-x);
   z-index: 300;
-  font-family: var(--ff-sans);
+  font-family: var(--ff-serif);
   font-size: var(--t-label);
   font-weight: 400;
   letter-spacing: 0.2em;
@@ -799,9 +806,52 @@ html, body {
 
 @media (max-width: 768px) {
   :root { --pad-x: 5vw; }
-  .lay-split { flex-direction: column; justify-content: center; gap: 2.5rem; }
-  .char-label-col { min-width: unset; flex: none; }
+
   .slide-content { padding: calc(var(--nav-h) + 2rem) var(--pad-x) var(--pad-b); }
+
+  /* characters: stop splitting name/bio side by side — stack and center like every other slide */
+  .lay-split {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .char-label-col { min-width: unset; flex: none; }
+  .char-desc-col  { text-align: center; }
+  .char-name      { font-size: clamp(2.6rem, 13vw, 4rem); }
+
+  /* work grid + about grid: stack instead of crowding side by side */
+  .work-grid, .about-grid { flex-direction: column; }
+
+  /* progress bar: section labels don't fit — collapse to plain dots */
+  .pb-label { display: none; }
+  .pb-track { align-items: center; }
+  .pb-dot, .pb-dot:last-child { align-items: center; }
+  .pb-dot::before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--white35);
+    transition: background 0.25s, transform 0.25s;
+  }
+  .pb-dot.active::before { background: var(--white); transform: scale(1.5); }
+
+  /* darken background art a bit more so type stays legible on small screens */
+  .slide-bg::after {
+    background: linear-gradient(160deg,
+      rgba(6,7,5,0.32) 0%, rgba(8,9,7,0.28) 50%, rgba(5,6,4,0.34) 100%);
+  }
+  #slide-synopsis-3 .slide-bg::after {
+    background: linear-gradient(160deg,
+      rgba(6,7,5,0.55) 0%, rgba(8,9,7,0.48) 50%, rgba(5,6,4,0.56) 100%);
+  }
+  #slide-about-1 .slide-bg::after { background: rgba(2,3,2,0.8); }
+  #slide-quinn .char-desc-col::before {
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0) 80%);
+  }
 }
 @media (max-width: 480px) {
   #slide-nav { right: 1rem; }
