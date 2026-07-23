@@ -98,6 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
     touchStartX = e.touches[0].clientX;
   }, { passive: true });
 
+  document.addEventListener('touchmove', e => {
+    e.preventDefault();
+  }, { passive: false });
+
   document.addEventListener('touchend', e => {
     const dY = touchStartY - e.changedTouches[0].clientY;
     const dX = touchStartX - e.changedTouches[0].clientX;
